@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-import domain.Symptom;
+import domain.ISymptom;
 
 
 public class Sorting {
@@ -13,7 +13,7 @@ public class Sorting {
 	      List<Object> list = new ArrayList<>();
 	      it.goLast();
 	      while (it.hasPrevious()) {
-	    	  Symptom s= (Symptom)it.previous();
+	    	  ISymptom s= (ISymptom)it.previous();
 	          list.add(s);
 	      }
 

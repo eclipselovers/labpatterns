@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import domain.ISymptom;
 import domain.Symptom;
 
 public class Covid19PacientIterator implements Iterator{
@@ -24,7 +25,7 @@ public class Covid19PacientIterator implements Iterator{
 
 	@Override
 	public Object next() {
-		Symptom symptom=symptoms.get(position);
+		ISymptom symptom=symptoms.get(position);
 		position++;
 		return symptom;
 	}

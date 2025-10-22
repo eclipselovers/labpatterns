@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import domain.Covid19Pacient;
+import domain.ISymptom;
 import domain.Symptom;
 
 import javax.swing.JLabel;
@@ -77,7 +78,7 @@ public class PacientSymptomGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				errorLabel.setText(" ");
 				if (new Integer(weightField.getText())<=3) {
-		    	System.out.println("Symptom added :"+(Symptom)symptomComboBox.getSelectedItem());
+		    	System.out.println("Symptom added :"+(ISymptom)symptomComboBox.getSelectedItem());
 
 				//addSymptomByName ...
 				
@@ -93,7 +94,7 @@ public class PacientSymptomGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				errorLabel.setText(" ");
 
-		    	System.out.println("Symptom removed :"+(Symptom)symptomComboBox.getSelectedItem());
+		    	System.out.println("Symptom removed :"+(ISymptom)symptomComboBox.getSelectedItem());
 
 				//removeSymptomByName...
 				

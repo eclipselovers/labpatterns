@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import domain.ISymptom;
 import domain.Medicament;
 import domain.Symptom;
 
@@ -96,7 +97,7 @@ public class  MedicalGUI extends JFrame {
 	}
 	
 	public void addSymptom(Medicament m, String symptomName) {
-		Symptom s;
+		ISymptom s;
 		
 		  if (m.getSymptomByName(symptomName)==null) {
 				s=m.addSymptomByName(symptomName);
@@ -121,7 +122,7 @@ public class  MedicalGUI extends JFrame {
 	
 	public String createReport() {
 		Iterator<Symptom> i=m.getSymptoms();
-	    Symptom p2;
+	    ISymptom p2;
 	    String s="<html>Symptoms treated by: <b>"+m.getName()+"</b><br>";
 	    while (i.hasNext()) {
 	    	 p2=i.next();

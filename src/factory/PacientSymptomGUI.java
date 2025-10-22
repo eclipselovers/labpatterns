@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import domain.Covid19Pacient;
+import domain.ISymptom;
 import domain.Symptom;
 
 import javax.swing.JLabel;
@@ -110,7 +111,7 @@ public class PacientSymptomGUI extends JFrame {
 	}
 	
 	public void addSymptom(Covid19Pacient p, String symptomName) {
-		Symptom s;
+		ISymptom s;
 		if (isNumeric(weightField.getText())) {
 		  if (p.getSymptomByName(symptomName)==null) {
 			if (Integer.parseInt(weightField.getText())<=3) {
@@ -138,7 +139,7 @@ public class PacientSymptomGUI extends JFrame {
 	
 	public String createReport() {
 		Iterator<Symptom> i=p.getSymptoms().iterator();
-	    Symptom p2;
+	    ISymptom p2;
 	    String s="<html> Covid impact: <b>"+p.covidImpact()+"</b><br>";
 	    s=s+"Symptoms: <br>";
 	    while (i.hasNext()) {

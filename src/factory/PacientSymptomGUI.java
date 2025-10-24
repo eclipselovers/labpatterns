@@ -19,7 +19,7 @@ import java.util.Observer;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
-public class PacientSymptomGUI extends JFrame implements Observer {
+public class PacientSymptomGUI extends JFrame  {
 
 	
 	private Covid19Pacient p;
@@ -38,7 +38,7 @@ public class PacientSymptomGUI extends JFrame implements Observer {
 	/**
 	 * Create the frame.
 	 */
-	public PacientSymptomGUI(Covid19Pacient p, Observable obs) {
+	public PacientSymptomGUI(Covid19Pacient p) {
 		this.p=p;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 435);
@@ -65,8 +65,6 @@ public class PacientSymptomGUI extends JFrame implements Observer {
 			public void actionPerformed(ActionEvent e) {
 
 					String symptomName=symptonNameField.getText();
-					p.addSymptomByName(((Symptom)symptomName,	
-							Integer.parseInt(weightField.getText()));
 					addSymptom(p,symptomName);
 			}
 		});
@@ -111,7 +109,7 @@ public class PacientSymptomGUI extends JFrame implements Observer {
 		reportLabel.setBounds(42, 263, 360, 114);
 		contentPane.add(reportLabel);
 		this.setVisible(true);
-		obs.addObserver(this);
+		
 	}
 	
 	public void addSymptom(Covid19Pacient p, String symptomName) {
@@ -163,20 +161,5 @@ public class PacientSymptomGUI extends JFrame implements Observer {
 		  }  
 		}
 
-	@Override
-	public void update(Observable o, Object arg1) {
-		Covid19Pacient p = (Covid19Pacient) o;
-		String s = "<html>	Pacient: <b>" + p.getName() + "</b>	<br>";
-		s = s + "Covid impact:	<b>" + p.covidImpact() + "</b><br><br>";
-		s = s + " _____________________	<br>	Symptoms:	<br>";
-		Iterator<Symptom> i = p.getSymptoms().iterator();
-		Symptom p2;
-		while (i.hasNext()) {
-			p2 = i.next();
-			s = s + "		- " + p2.toString() + ",	" + p.getWeight(p2) + "<br>";
-		}
-		s = s + "</html>";
-		symptonNameField.setText(s);
-
-	}
+	
 }

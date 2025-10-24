@@ -96,7 +96,9 @@ public class Covid19Pacient extends Observable {
 			if (c!=null )
 			   afection=afection+c.getSeverityIndex()*symptoms.get(c);
 		}
-		afection=afection/symptoms.size();
+		if(symptoms.size() != 0) {
+			afection=afection/symptoms.size();
+		}
 		
 		//calculate increment
 		if (getAge()>65) increment=afection*0.5;

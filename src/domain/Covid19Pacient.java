@@ -54,20 +54,32 @@ public class Covid19Pacient extends Observable {
 
 	public void addSymptom(Symptom c, Integer w){
 		symptoms.put(c,w);
+		// notify observers that state changed
+		setChanged();
+		notifyObservers(c);
 	}
 	
 	public ISymptom addSymptomByName(String symptom, Integer w){
 		Symptom s=null;
 		s=factory.createSymptom(symptom); 
-		if (s!=null) 
-			symptoms.put(s,w);		
+		if (s!=null) {
+			symptoms.put(s,w);
+			// notify observers that state changed
+			setChanged();
+			notifyObservers(s);
+		}		
 		return s;
 	}
 
 	public ISymptom removeSymptomByName(String symptomName) {
 		ISymptom s=getSymptomByName(symptomName);
 		System.out.println("Simptom to remove: "+s);
-		if (s!=null) symptoms.remove(s);
+		if (s!=null) {
+			symptoms.remove(s);
+			// notify observers that state changed
+			setChanged();
+			notifyObservers(s);
+		}
 		return s;
 	}
 	public Iterator iterator() {
@@ -94,4 +106,3 @@ public class Covid19Pacient extends Observable {
 		return impact;
 	}
 }
-

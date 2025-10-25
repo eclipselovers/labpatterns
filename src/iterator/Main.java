@@ -1,4 +1,6 @@
 package iterator;
+import adapter.InvertedIterator;
+import adapter.Sorting;
 
 import java.util.Iterator;
 
@@ -19,9 +21,11 @@ import domain.Symptom;
 			p.addSymptom(new Symptom("s4", 10, 10), 4);
 			p.addSymptom(new Symptom("s5", 10, 10), 5);
 			
-			Iterator i=p.iterator();
-			while(i.hasNext())
-				System.out.println(i.next());
+			InvertedIterator invertedIterator=new InvertedIteratorCovid19PacientAdapter(p.getSymptoms());
+			invertedIterator.goLast();
+			Sorting.sortedIterator(invertedIterator, new symptomNameComparator());
+			while(invertedIterator.hasPrevious())
+				System.out.println(invertedIterator.previous());
 
 		}
 

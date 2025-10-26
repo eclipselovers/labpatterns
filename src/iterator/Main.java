@@ -1,12 +1,9 @@
 package iterator;
+import java.util.Iterator;
+
 import adapter.InvertedIterator;
 import adapter.Sorting;
 
-import java.util.Iterator;
-
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 
 import domain.Covid19Pacient;
 import domain.Symptom;
@@ -23,10 +20,14 @@ import domain.Symptom;
 			
 			InvertedIterator invertedIterator=new InvertedIteratorCovid19PacientAdapter(p.getSymptoms());
 			invertedIterator.goLast();
-			Sorting.sortedIterator(invertedIterator, new symptomNameComparator());
-			while(invertedIterator.hasPrevious())
-				System.out.println(invertedIterator.previous());
-
+			Iterator<Object> itsymptname = Sorting.sortedIterator(invertedIterator, new symptomNameComparator());
+			Iterator<Object> itsymptindex = Sorting.sortedIterator(invertedIterator, new severityIndexComparator());
+			System.out.println("\n Symptom name arabera ordenatuta: \n");
+			while(itsymptname.hasNext())
+				System.out.println(itsymptname.next());
+			System.out.println("\n Severity index arabera ordenatuta: \n");
+			while(itsymptindex.hasNext())
+				System.out.println(itsymptindex.next());
 		}
 
 	}
